@@ -19,16 +19,16 @@ namespace Shekru_Task.Controllers
 
         public IActionResult Create()
         {
-            ViewBag.DesignationrefList = new SelectList(_context.Designations.Where(e => e.IsActive == true), "DID", "Designationname");
-            ViewBag.DesignationgradeList = new SelectList(_context.DesignationGrades.Where(e => e.IsActive == true), "DGId", "Gradename");
+            ViewBag.DesignationrefList = new SelectList(_context.Designations.Where(e => e.IsActive == true), "Did", "Designationname");
+            ViewBag.DesignationgradeList = new SelectList(_context.DesignationGrades.Where(e => e.IsActive == true), "Dgid", "Gradename");
             return View();
         }
 
         [HttpPost]
         public IActionResult Create(Employee e)
         {
-            ViewBag.DesignationrefList = new SelectList(_context.Designations.Where(e => e.IsActive == true), "DID", "Designationname");
-            ViewBag.DesignationgradeList = new SelectList(_context.DesignationGrades.Where(e => e.IsActive == true), "DGId", "Gradename");
+            ViewBag.DesignationrefList = new SelectList(_context.Designations.Where(e => e.IsActive == true), "Did", "Designationname");
+            ViewBag.DesignationgradeList = new SelectList(_context.DesignationGrades.Where(e => e.IsActive == true), "Dgid", "Gradename");
             _context.Employees.Add(e);
             _context.SaveChanges();
             TempData["success"] = "Employee Added  Successfully";
