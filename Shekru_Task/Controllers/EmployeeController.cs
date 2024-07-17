@@ -38,8 +38,8 @@ namespace Shekru_Task.Controllers
 
         public async Task<IActionResult> Edit(int? id)
         {
-            ViewBag.DesignationrefList = new SelectList(_context.Designations.Where(e => e.IsActive == true), "DID", "Designationname");
-            ViewBag.DesignationgradeList = new SelectList(_context.DesignationGrades.Where(e => e.IsActive == true), "DGId", "Gradename");
+            ViewBag.DesignationrefList = new SelectList(_context.Designations.Where(e => e.IsActive == true), "Did", "Designationname");
+            ViewBag.DesignationgradeList = new SelectList(_context.DesignationGrades.Where(e => e.IsActive == true), "Dgid", "Gradename");
             if (id == null)
             {
                 return NotFound();
@@ -59,8 +59,8 @@ namespace Shekru_Task.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id,Employee e)
         {
-            ViewBag.DesignationrefList = new SelectList(_context.Designations.Where(e => e.IsActive == true), "DID", "Designationname");
-            ViewBag.DesignationgradeList = new SelectList(_context.DesignationGrades.Where(e => e.IsActive == true), "DGId", "Gradename");
+            ViewBag.DesignationrefList = new SelectList(_context.Designations.Where(e => e.IsActive == true), "Did", "Designationname");
+            ViewBag.DesignationgradeList = new SelectList(_context.DesignationGrades.Where(e => e.IsActive == true), "Dgid", "Gradename");
 
             if (ModelState.IsValid)
             {
