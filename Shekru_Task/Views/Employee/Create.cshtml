@@ -1,0 +1,91 @@
+﻿@model Shekru_Task.Models.Employee
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "_Layout";
+}
+
+
+
+<main id="main" class="main">
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-11">
+                <div class="form-container">
+                    <div class="card-header text-uppercase text-white" style="height: 80px; background-color:#012970; margin-bottom:30px;">
+                        <a href="/Employee/Index" style="text-decoration: none; color: inherit;">
+                            <span class="arrow-icon" style="margin-right: 10px; font-weight: bold; color: white; font-size: 35px;">&larr;</span>
+                        </a>
+                        <h4 style="display: inline-block; margin-top:20px; color:white;">Create Employee</h4>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <form asp-action="Create">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <div class="form-group">
+                                    <label asp-for="Firstname" class="control-label" style="font-weight:bold;">First name</label><span class="text-danger">*</span>
+                                    <input asp-for="Firstname" class="form-control" />
+                                    <span asp-validation-for="Firstname" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Lastname" class="control-label" style="font-weight:bold;">Last name</label><span class="text-danger">*</span>
+                                    <input asp-for="Lastname" class="form-control" />
+                                    <span asp-validation-for="Lastname" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="EmailAddress" class="control-label" style="font-weight:bold;">Email </label><span class="text-danger">*</span>
+                                    <input asp-for="EmailAddress" class="form-control" />
+                                    <span asp-validation-for="EmailAddress" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Phonenumber" class="control-label" style="font-weight:bold;">phone number </label><span class="text-danger">*</span>
+                                    <input asp-for="Phonenumber" class="form-control" />
+                                    <span asp-validation-for="Phonenumber" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <label asp-for="DesignationRef" class="control-label" style="font-weight: bold;">designation ref</label>
+                                    <select asp-for="DesignationRef" class="form-control" asp-items="@ViewBag.DesignationrefList" required>
+                                        <option value="">Select</option>
+                                    </select>
+                                    <span asp-validation-for="DesignationRef" class="text-danger"></span>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="Graderef" class="control-label" style="font-weight: bold;">Designation grade</label>
+                                    <select asp-for="Graderef" class="form-control" asp-items="@ViewBag.DesignationgradeList" required>
+                                        <option value="">Select</option>
+                                    </select>
+                                    <span asp-validation-for="Graderef" class="text-danger"></span>
+                                </div>
+
+
+                                <br />
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-success">Save</button>
+                                    <a asp-action="Index" class="btn btn-danger">Close</a>
+                                    <a asp-action="Create" class="btn btn-primary">Add New</a>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+
+@section Scripts {
+   
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+}
+
+
+
