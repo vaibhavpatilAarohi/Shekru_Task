@@ -14,4 +14,8 @@ public partial class DesignationGrade
     public int? Designationref { get; set; }
 
     public bool? IsActive { get; set; }
+
+    public virtual Designation DesignationrefNavigation { get; set; }
+
+    public virtual ICollection<Employee> Employees { get; set; } = new List<Employee>();
 }
