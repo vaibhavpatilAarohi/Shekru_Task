@@ -74,6 +74,8 @@ namespace Shekru_Task.Controllers
                 {
 
                 }
+                TempData["success"] = "Employee Edited  Successfully";
+
                 return RedirectToAction(nameof(Index));
             }
            
@@ -83,7 +85,7 @@ namespace Shekru_Task.Controllers
         public IActionResult Index()
         {
 
-            var shekru = _context.Employees.ToList();
+            var shekru = _context.Employees.Include(l=>l.DesignationRefNavigation).Include(l=>l.GraderefNavigation).ToList();
             return View(shekru);
         }
     }

@@ -12,4 +12,8 @@ public partial class Designation
     public string Designationname { get; set; }
 
     public bool? IsActive { get; set; }
+
+    public virtual ICollection<DesignationGrade> DesignationGrades { get; set; } = new List<DesignationGrade>();
+
+    public virtual ICollection<Employee> Employees { get; set; } = new List<Employee>();
 }

@@ -24,23 +24,28 @@
                             <form asp-action="Create">
                                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                                 <div class="form-group">
-                                    <label asp-for="Firstname" class="control-label" style="font-weight:bold;">First name</label><span class="text-danger">*</span>
+                                    <label asp-for="Firstname" class="control-label" style="font-weight:bold;">First name</label>
+                                    <span class="text-danger">*</span>
                                     <input asp-for="Firstname" class="form-control" />
                                     <span asp-validation-for="Firstname" class="text-danger"></span>
                                 </div>
+
                                 <div class="form-group">
-                                    <label asp-for="Lastname" class="control-label" style="font-weight:bold;">Last name</label><span class="text-danger">*</span>
+                                    <label asp-for="Lastname" class="control-label" style="font-weight:bold;">Last name</label>
+                                    <span class="text-danger">*</span>
                                     <input asp-for="Lastname" class="form-control" />
                                     <span asp-validation-for="Lastname" class="text-danger"></span>
                                 </div>
                                 <div class="form-group">
-                                    <label asp-for="EmailAddress" class="control-label" style="font-weight:bold;">Email </label><span class="text-danger">*</span>
+                                    <label asp-for="EmailAddress" class="control-label" style="font-weight:bold;">Email</label>
+                                    <span class="text-danger">*</span>
                                     <input asp-for="EmailAddress" class="form-control" />
                                     <span asp-validation-for="EmailAddress" class="text-danger"></span>
                                 </div>
                                 <div class="form-group">
-                                    <label asp-for="Phonenumber" class="control-label" style="font-weight:bold;">phone number </label><span class="text-danger">*</span>
-                                    <input asp-for="Phonenumber" maxlength="10" class="form-control" />
+                                    <label asp-for="Phonenumber" class="control-label" style="font-weight:bold;">Phone Number</label>
+                                    <span class="text-danger">*</span>
+                                    <input asp-for="Phonenumber" class="form-control" />
                                     <span asp-validation-for="Phonenumber" class="text-danger"></span>
                                 </div>
 
@@ -78,14 +83,37 @@
 
 </main>
 
+  @section Scripts {
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-3.3.1.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.17.0/jquery.validate.min.js"></script>
+    <script src="https://ajax.aspnetcdn.com/ajax/mvc/5.2.3/jquery.validate.unobtrusive.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("form").submit(function(event) {
+                
+                var email = $("input[name='EmailAddress']").val();
+                var firstName = $("input[name='Firstname']").val();
+                var lastName = $("input[name='Lastname']").val();
+                var namePattern = /^[a-zA-Z\s'-]+$/;
 
-@section Scripts {
-   
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
+                if (!emailPattern.test(email)) {
+                    event.preventDefault();
+                    alert("Please enter a valid email address.");
+                }
 
+                if (!namePattern.test(firstName)) {
+                    event.preventDefault();
+                    alert("First name can only contain letters, spaces, hyphens, and apostrophes.");
+                }
+
+                if (!namePattern.test(lastName)) {
+                    event.preventDefault();
+                    alert("Last name can only contain letters, spaces, hyphens, and apostrophes.");
+                }
+
+               
+            });
+        });
+    </script>
 }
-
-
 
